@@ -98,13 +98,6 @@ export default (humanChoi, state) => {
         return;
     }
 
-   
-
-    // for (let i = 0; i < 5; i++) {
-    //     const human = humanChoice()
-    //     const computer = getComputerChoice()
-    //     playRound(human, computer);
-    // }
     playRound(humanChoi, getComputerChoice())
 
     return
