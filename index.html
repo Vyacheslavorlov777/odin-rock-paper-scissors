@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./src/css/style.css">
-    <script type="module" src="./src/js/index.js"></script>
+    <script type="module" src="./src/js/interactiveGema.js"></script>
 </head>
 <body>
     <header>
@@ -13,9 +13,7 @@
     </header>
 
     <div class="container">
-        <div class="result-conteiner">
-            <div class="result">
-                <div><span class="result-result"></span></div>
+        <div class="result-container">
                 <div class="human-container">
                     <span class="icon-user"></span>
                     <p class="score-human"></p>
@@ -24,12 +22,25 @@
                     <span class="icon-computer"></span>
                     <p class="score-computer"></p>
                 </div>
-            </div>
         </div>
         <div class="icons">
-            <img class="rock-icon" src="/src/img/icons8-камень-100.png" alt="" srcset="">
-            <img class="paper-icon" src="/src/img/icons8-матовая-бумага-100.png" alt="" srcset="">
-            <img class="scissors-icon" src="/src/img/icons8-парикмахерские-ножницы-100.png" alt="" srcset="">
+            <div class="icon">
+                <img id="rock" class="rock-icon" src="/src/img/icons8-камень-100.png" alt="" srcset="">
+            </div>
+            <div class="icon">
+                <img id="paper" class="paper-icon" src="/src/img/icons8-матовая-бумага-100.png" alt="" srcset="">
+            </div>
+            <div class="icon">
+                <img id="scissors" class="scissors-icon" src="/src/img/icons8-парикмахерские-ножницы-100.png" alt="" srcset="">
+            </div>
+        </div>
+    </div>
+    <div class="modalBackground">
+        <div class="modalActive">
+            <div class="modalClose">
+                <img class="closed" src="./src/img/close.png" />
+            </div>
+            <div class="modalWindow"></div>
         </div>
     </div>
    
