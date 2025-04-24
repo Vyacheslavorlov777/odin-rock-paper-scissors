@@ -13,47 +13,15 @@ export default (humanChoi, state) => {
     }
 
     const getComputerChoice = () => {
-        const randomElement = Math.floor(Math.random() * 3)
-        switch (randomElement) {
-            case 0:
-                return 'rock';
-            case 1:
-                return 'paper';
-            case 2:
-                return 'scissors';
-            default:
-                break;
-        }
+        const choices = ['rock', 'paper', 'scissors'];
+        return choices[Math.floor(Math.random() * choices.length)];
     }
 
     const render = (humanChoi, computerChoi) => {
-        switch (humanChoi.target.id) {
-            case 'rock':
-                elements.iconUser.innerHTML = `<img id="rock" class="rock-icon icon-main" src="/src/img/rock.PNG" alt="" srcset="">`;
-                break;
-            case 'paper':
-                elements.iconUser.innerHTML = `<img id="paper" class="paper-icon icon-main" src="/src/img/paper.PNG" alt="" srcset="">`;
-                break;
-            case 'scissors':
-                elements.iconUser.innerHTML = `<img id="scissors" class="scissors-icon icon-main" src="/src/img/scissors.PNG" alt="" srcset="">`;
-                break;
-            default:
-                break;
-        }
+        const humanValue = humanChoi.target.id;
 
-        switch (computerChoi) {
-            case 'rock':
-                elements.iconComputer.innerHTML = `<img id="rock" class="rock-icon icon-main" src="/src/img/comp-rock.PNG" alt="" srcset="">`;
-                break;
-            case 'paper':
-                elements.iconComputer.innerHTML = `<img id="paper" class="paper-icon icon-main" src="/src/img/comp-paper.PNG" alt="" srcset="">`;
-                break;
-            case 'scissors':
-                elements.iconComputer.innerHTML = `<img id="scissors" class="scissors-icon icon-main" src="/src/img/comp-scissors.PNG" alt="" srcset="">`;
-                break;
-            default:
-                break;
-    }
+        elements.iconUser.innerHTML = `<img id="${humanValue}" class="${humanValue}-icon icon-main" src="/src/img/${humanValue}.PNG" alt="" srcset="">`;
+        elements.iconComputer.innerHTML = `<img id="${computerChoi}" class="${computerChoi}-icon icon-main" src="/src/img/comp-${computerChoi}.PNG" alt="" srcset="">`;
 
         if (state.humanScore === 5) {
             elements.modal.style.display = 'block';
@@ -70,27 +38,20 @@ export default (humanChoi, state) => {
     };
 
     const game = (valueHuman, valueComp) => {
-        const valueHumanChoi = valueHuman.target.id
-        if (valueHumanChoi === valueComp) {
-            return
-        } else if (valueHumanChoi === 'rock' && valueComp === 'paper') {
-            state.computerScore += 1;
-            return
-        } else if (valueHumanChoi === 'paper' && valueComp === 'rock') {
+        const humanChoice = valueHuman.target.id;
+
+        const winnerCombination = {
+            rock: 'scissors',
+            paper: 'rock',
+            scissors: 'paper',
+        };
+
+        if (humanChoi === valueComp) {
+            return;
+        } else if (winnerCombination[humanChoice] === valueComp) {
             state.humanScore += 1;
-            return
-        } else if (valueHumanChoi === 'scissors' && valueComp === 'rock') {
+        } else {
             state.computerScore += 1;
-            return
-        } else if (valueHumanChoi === 'rock' && valueComp === 'scissors') {
-            state.humanScore += 1;
-            return
-        }  else if (valueHumanChoi === 'paper' && valueComp === 'scissors') {
-            state.computerScore += 1;
-            return
-        } else if (valueHumanChoi === 'scissors' && valueComp === 'paper') {
-            state.humanScore += 1;
-            return
         }
     };
 

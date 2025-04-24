@@ -6,34 +6,22 @@ const app = () => {
         computerScore: 0,
     };
 
-    const elements = {
-        rock: document.querySelector('.rock-icon'),
-        paper: document.querySelector('.paper-icon'),
-        scisoors: document.querySelector('.scissors-icon'),
-        modal: document.querySelector('.modalBackground'),
-        closed: document.querySelector('.closed'),
-    };
+    const humanChoices = document.querySelectorAll('.human-choice');
+    const modal = document.querySelector('.modalBackground');
+    const closed = document.querySelector('.closed');
 
-    elements.rock.addEventListener('click', (e) => {
-        e.preventDefault()
-        play(e, state)
-    })
-    
-    elements.paper.addEventListener('click', (e) => {
-        e.preventDefault()
-        play(e, state)
-    })
-    
-    elements.scisoors.addEventListener('click', (e) => {
-        e.preventDefault()
-        play(e, state)
-    })
+    humanChoices.forEach((choi) => {
+        choi.addEventListener('click', (ev) => {
+            ev.preventDefault();
+            play(ev, state);
+        })
+    });
 
-    elements.closed.addEventListener('click', (e) => {
-        elements.modal.style.display = 'none'
-    })
+    closed.addEventListener('click', (e) => {
+        modal.style.display = 'none'
+    });
 
-    return
-}
+    return;
+};
 
 app()
